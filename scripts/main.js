@@ -14,8 +14,16 @@ Events.run(Trigger.update, () => {
 		waveSkipTime++;
 		if (waveSkipTime == WaveSkipFrame)
 		{
-			waveSkipTime = 0;
-			Vars.logic.skipWave();
+			if (Core.input.keyDown(Binding.boost))
+			{
+				waveSkipTime = 0;
+				Vars.state.wavetime += 18000;
+			}
+			else
+			{
+				waveSkipTime = 0;
+				Vars.logic.skipWave();
+			}
 		}
 	}
 	else
